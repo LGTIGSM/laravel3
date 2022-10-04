@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    public $incrementing  = true;
 
     protected $table = 'customers';
 

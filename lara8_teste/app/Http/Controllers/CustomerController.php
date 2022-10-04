@@ -43,7 +43,7 @@ class CustomerController extends Controller
         $customer = new Customer();
         $customer->name = $request->name;
         $customer->email = $request->email;
-        $results =  $customer->insertGetId()->save();
+        $customer->save();
         
 
         $address = new Address();
