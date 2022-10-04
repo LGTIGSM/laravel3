@@ -12,22 +12,22 @@
 
 <form action="" method="post">
   <label for="name">Nome:</label>
-  <input type="text" name="name" id="name">
+  <input type="text" name="name" id="name" value="{{$customer->name}}">
   
   <label for="email">E-mail:</label>
-  <input type="text" name="email" id="email">
+  <input type="text" name="email" id="email" value="{{$customer->email}}">
 
   <label for="city">cidade:</label>
-  <input type="text" name="city" id="city">
+  <input type="text" name="city" id="city" value="{{$address->city}}">
   
   <label for="state">uf:</label>
-  <input type="text" name="state" id="state">
+  <input type="text" name="state" id="state" value="{{$address->state}}">
 
   <label for="number">numero:</label>
-  <input type="text" name="number" id="number">
+  <input type="text" name="number" id="number" value="{{$address->number}}">
 
   <label for="complement">Complemento:</label>
-  <input type="text" name="complement" id="complement">
+  <input type="text" name="complement" id="complement" value="{{$address->complement}}">
 
   <input type="submit" value="Enviar">
 </form>

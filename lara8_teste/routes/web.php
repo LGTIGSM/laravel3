@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/clientes', '\App\Http\Controllers\CustomerController@index')->names('customer')->parameters(['clientes' => 'customer']);
+Route::resource('/clientes', '\App\Http\Controllers\CustomerController')->names('customer')->parameters(['clientes' => 'customer']);

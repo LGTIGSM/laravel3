@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::all();
+        return view('allCustomers', [
+            'customers' => $customers
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('addCustomer');
     }
 
     /**
@@ -35,7 +39,21 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $customer = new Customer();
+        $customer->name = $request->name;
+        $customer->email = $request->email;
+        $results =  $customer->insertGetId()->save();
+        
+
+        $address = new Address();
+        $address->city = $request->city;
+        $address->state = $request->state;
+        $address->number = $request->number;
+        $address->complement = $request->complement;
+        $address->save();
+
+        var_dump($results);
     }
 
     /**
@@ -46,9 +64,16 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
-    }
+        $cliente = Customer::where('id', $customer->id)->first();
 
+        $address = $cliente->address()->first();
+        
+        return view('editCustomer', [
+            'customer' => $cliente,
+            'address' =>  $address
+        ]);
+    }
+ 
     /**
      * Show the form for editing the specified resource.
      *

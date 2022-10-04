@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
 {
-    use HasFactory;
+    public $incrementing = true;
+    
+    protected $table = 'addresses';
 }

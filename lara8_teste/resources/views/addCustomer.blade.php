@@ -10,7 +10,8 @@
 
 <h1>Adicionar Cliente</h1>
 
-<form action="" method="post">
+<form action="{{ route('customer.store')}}" method="post">
+  @csrf
   <label for="name">Nome:</label>
   <input type="text" name="name" id="name">
   
