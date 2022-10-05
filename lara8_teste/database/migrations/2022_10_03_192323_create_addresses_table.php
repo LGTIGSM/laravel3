@@ -23,7 +23,7 @@ class CreateAddressesTable extends Migration
             $table->string('complement');
             $table->timestamps();
             $table->softDeletes();
-
+            
         });
     }
 

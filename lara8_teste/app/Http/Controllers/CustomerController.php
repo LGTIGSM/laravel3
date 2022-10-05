@@ -39,21 +39,10 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        $customer = new Customer();
-        $customer->name = $request->name;
-        $customer->email = $request->email;
-        $customer->save();
+        $customer = Customer::create($request->all());
+        $customer->address()->create($request->all());
         
-
-        $address = new Address();
-        $address->city = $request->city;
-        $address->state = $request->state;
-        $address->number = $request->number;
-        $address->complement = $request->complement;
-        $address->save();
-
-        var_dump($results);
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -105,6 +94,9 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+
+        $customer->delete();
+
+        return redirect()->route('customer.index');
     }
 }
