@@ -26,7 +26,7 @@
       <td>{{$customer->name}}</td>
       <td>{{$customer->email}}</td>
       <td>
-      <a href="{{ route('customer.show', ['customer' => $customer->id])}}">Ver Cliente</a>
+      <a href="{{ route('customer.edit', ['customer' => $customer->id])}}">Ver Cliente</a>
       <form action="{{ route('customer.destroy', ['customer' => $customer->id])}}" method="post">
         @csrf
         @method('delete')

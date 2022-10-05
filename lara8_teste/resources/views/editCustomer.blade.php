@@ -10,7 +10,9 @@
 
 <h1>Editar Cliente</h1>
 
-<form action="" method="post">
+<form action="{{ route('customer.update', ['customer' => $customer->id])}}" method="post">
+  @csrf
+  @method('put')
   <label for="name">Nome:</label>
   <input type="text" name="name" id="name" value="{{$customer->name}}">
   

@@ -53,14 +53,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        $cliente = Customer::where('id', $customer->id)->first();
-
-        $address = $cliente->address()->first();
-        
-        return view('editCustomer', [
-            'customer' => $cliente,
-            'address' =>  $address
-        ]);
+ 
     }
  
     /**
@@ -71,7 +64,14 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        $cliente = Customer::where('id', $customer->id)->first();
+
+        $address = $cliente->address()->first();
+        
+        return view('editCustomer', [
+            'customer' => $cliente,
+            'address' =>  $address
+        ]);
     }
 
     /**
@@ -83,7 +83,10 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $customer = Customer::create($request->all());
+        $customer->address()->create($request->all());
+        
+        return redirect()->route('customer.index');
     }
 
     /**
